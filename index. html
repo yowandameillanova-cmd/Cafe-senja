@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Senja - Aroma & Cerita</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variabel Warna (Ubah di sini untuk mengganti tema) */
+        :root {
+            --warna-latar: #F5EFE6; /* Krem lembut */
+            --warna-primer: #6F4E37; /* Cokelat kopi */
+            --warna-teks: #3D352E;   /* Cokelat tua */
+            --warna-putih: #FFFFFF;
+            --font-judul: 'Playfair Display', serif;
+            --font-teks: 'Lato', sans-serif;
+        }
+
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-teks);
+            background-color: var(--warna-latar);
+            color: var(--warna-teks);
+            line-height: 1.6;
+        }
+
+        /* Utilitas */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-judul);
+            color: var(--warna-primer);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* 1. Header & Navigasi */
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-judul);
+            font-size: 1.8rem;
+            color: var(--warna-primer);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--warna-teks);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--warna-primer);
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--warna-putih);
+            position: relative;
+            
+            /* Ganti URL ini dengan gambar latar kafe Anda */
+            background: url('https://images.unsplash.com/photo-1511920183230-194c61b4798f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNTU5fDB8MXxzZWFyY2h8M3x8Y2FmZXxlbnwwfHx8fDE3MTc1NjkxNjl8MA&ixlib=rb-4.0.3&q=80&w=1920') no-repeat center center/cover;
+        }
+
+        /* Overlay gelap agar teks terbaca */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative; /* Agar di atas overlay */
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--warna-putih);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--warna-primer);
+            color: var(--warna-putih);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a3c2a;
+        }
+
+        /* 3. Bagian 'Tentang Kami' */
+        #tentang {
+            background: var(--warna-putih);
+        }
+
+        .tentang-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .tentang-content img {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 4. Bagian 'Menu Spesial' */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--warna-putih);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .menu-card img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .menu-card p {
+            margin-bottom: 1rem;
+        }
+
+        .harga {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--warna-primer);
+        }
+
+        /* 5. Bagian 'Kontak & Lokasi' */
+        #kontak {
+            background: var(--warna-teks);
+            color: var(--warna-latar
